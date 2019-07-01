@@ -19,7 +19,11 @@
 \usepackage{graphicx}
 
 
-\usepackage{stackengine}
+\usepackage[colorlinks = true,
+linkcolor = red,
+urlcolor  = red,
+citecolor = red,
+anchorcolor = red]{hyperref}
 \usepackage[display]{texpower}
 %\usepackage[screen,nopanel]{pdfscreen}
 %\usepackage{booktabs}
@@ -78,19 +82,18 @@
 \def \lecturedate {}  % Change this to the date of class
 \def \lecturenumber {} % Change this to the number of the class
 \def \lecturetitle {} % Change this too
-\def\delequal{\mathrel{\ensurestackMath{\stackon[1pt]{=}{\scriptstyle\Delta}}}}
 \begin{document}
-	\title{%
-		\fontsize{16}{24}\bfseries % boldface 25pt
-		\makebox[\textwidth][s]{%
-			\makebox[30pt][l]{%
-				\includegraphics[width=0.15\textwidth]{logo}}%
+	\title{
+		\fontsize{16}{24}\bfseries
+		\makebox[\textwidth][s]{
+			\makebox[-10pt][l]{
+				}
 			\hfill
 			\begin{tabular}[b]{@{}c@{}}
-			    Machine Learning a probabilistic perspective \\ by Kevin Murphy \\ Chapter 3 : Exercise 2 \\
+			    Algo Bucket
 			\end{tabular}%
 			\hfill
-		}%
+		}
 	}
 	\date{\today}
 	\maketitle
@@ -100,27 +103,7 @@
 	
 	\begin{mybox}{goldenyellow}{}
 		\begin{prob*}		
-			Marginal likelihood for the Beta-Bernoulli model\\
-			In Equation 5.23, we showed that the marginal likelihood is the ratio of the normalizing constants: (This comes in the later chapter and hence you don't have to worry about it now. All the information required for this question has been given below.)\\
-			\begin{equation}
-			p(\textit{D})\;=\;\dfrac{\textit{Z}({\alpha}_0\;+\;N_0\;,\;{\alpha}_1\;+\;N_1)}{\textit{Z}(\alpha_0\;,\;\alpha_1)} \;=\;\dfrac{\Gamma(\alpha_0\;+\;N_0)\;\Gamma(\alpha_1\;+\;N_1)\;\Gamma(\alpha_0\;+\;\alpha_1)}{\Gamma(\alpha_0\;+\;\alpha_1\;+\;N)\;\Gamma(\alpha_0)\;\Gamma(\alpha_1)} \tag{3.80}
-			\end{equation}
-			We will now derive an alternative derivation of this fact. By the chain rule of probability,\\
-			\begin{equation}
-			p(x_{1:N})\;=\;p(x_1)p(x_2|x_1)p(x_3|x_{1:2})\dots \tag{3.81}
-			\end{equation}
-			In Section 3.3.4, we showed that the posterior predictive distribution is,\\
-			\begin{equation}
-			p(X\;=\;k|D_{1:N})\;=\;\dfrac{N_k\;+\;\alpha_k}{\sum_i\;N_i\;+\;\alpha_i}\;\delequal\;\dfrac{N_k\;+\;\alpha_k}{N\;+\;\alpha} \tag{3.82}
-			\end{equation}
-			where $k\;\in\;\{0,1\}$ and $D_{1:N}$ is the data seen so far. $D = H, T, T,H,H \;\text{or}\; D = 1, 0, 0, 1, 1$.
-			Then,\\
-			\begin{align}
-			p(D)\;=&\;\dfrac{\alpha_1}{\alpha}.\dfrac{\alpha_0}{\alpha\;+\;1}.\dfrac{\alpha_0\;+\;1}{\alpha\;+\;2}.\dfrac{\alpha_1\;+\;1}{\alpha\;+\;3}.\dfrac{\alpha_1\;+\;2}{\alpha\;+\;4} \tag{3.83}\\\nonumber\\
-			=&\;\dfrac{[(\alpha_1)\dots(\alpha_1\;+\;N_1\;-\;1)][(\alpha_0)\dots(\alpha_0\;+\;N_0\;-\;1)]}{(\alpha)\dots(\alpha\;+\;N\;-\;1)} \tag{3.85} \label{eqn3.85}
-			\end{align}
-			Show how this reduces to Equation 3.80 by using the fact that, for integers, $\Gamma(\alpha)\;=\;(\alpha-1)!$
-			
+			Here I will be listing all the important algorithm's that you have to remember before going to any interview or coding competitions. (Not necessary that I mention every single one of them)
 			\end{prob*}
 	\end{mybox}
 
@@ -129,32 +112,15 @@
 			
 \begin{mybox}{electricindigo}{}
 	\textbf{Solution :} 
-	In the fifth chapter we would be learning about the marginal likelihood of the Beta-Bernoulli model. In this question we are considering the fact that it can be calculated using gamma functions, which we are going to derive from the knowledge of posterior predictive distribution that we have from (page:81).\\\\
-	Marginal likelihood can basically be defined as the probability of the data to occur. This does not depend on the parameters used to model the probability distribution to predict on un-seen data points and hence it is most often not used to form the posterior predictive distribution.\\\\
-	If you are still unable to grasp what it means, then it is enough to know that, the denominator of the Bayes' formula is the marginal likelihood.\\\\
-	\textbf{Note (If you didn't notice while reading the question):}
 	\begin{itemize}
-		\item The posterior predictive distribution is formulated using dirichlet prior and dirichlet likelihood, where $\alpha$ is the scaling parameter or concentration paramter for the distribution.
+		\item[\textbf{1}] Kadane's algorithm 
+		\item[\textbf{2}] Johnson and Trotter algorithm (Permutations of a string using mobile integers) 
+		\item[\textbf{3}] Euclidean algorithm (To find GCD) 
+		\item[\textbf{4}] \href{https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm}{Extended Euclidean algorithm} (Find coefficients of Bezout's identity eg: find x,y in ax+by=gcd(a,b))
+		\item[\textbf{5}] Matrix exponentiation (To find solutions that consists of finding something similar to fibonacci numbers, (Where you add previous numbers to get current number))
+		\item[\textbf{5}] Partition problem (To find ways to split )
+		
 	\end{itemize}
-	Now that we know all the background information, let's get back to solving the question.\\
-	The numerators of $(\ref{eqn3.85})$ in terms of gamma function will be,
-	\begin{equation}
-	\dfrac{\Gamma(\alpha_1\;+\;N_1)}{\Gamma(\alpha_1)}.\dfrac{\Gamma(\alpha_0\;+\;N_0)}{\Gamma(\alpha_0)} \label{eqn1}
-	\end{equation}
-	and the denominator will be,
-	\begin{equation}
-	\dfrac{\Gamma(\alpha\;+\;N)}{\Gamma(\alpha)} \label{eqn2}
-	\end{equation}
-	Solving by considering $(\ref{eqn1})$ and $(\ref{eqn2})$ together,
-	\begin{equation}
-	p(D)\;=\;\dfrac{\Gamma(\alpha_0\;+\;N_0)\;\Gamma(\alpha_1\;+\;N_1)\;\Gamma(\alpha)}{\Gamma(\alpha\;+\;N)\;\Gamma(\alpha_0)\;\Gamma(\alpha_1)}
-	\end{equation}
-	Since $\alpha\;=\;\alpha_0\;+\;\alpha_1$,
-	\begin{equation}
-	p(D)\;=\;\dfrac{\Gamma(\alpha_0\;+\;N_0)\;\Gamma(\alpha_1\;+\;N_1)\;\Gamma(\alpha_0\;+\;\alpha_1)}{\Gamma(\alpha_0\;+\;\alpha_1\;+\;N)\;\Gamma(\alpha_0)\;\Gamma(\alpha_1)} \label{eqn4}
-	\end{equation}
-	Thus, $(\ref{eqn4})$ is similar to $(\ref{eqn3.85})$.
-
 	
 
 \end{mybox}
