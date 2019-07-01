@@ -1,0 +1,168 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{fullpage}
+\usepackage{times}
+\usepackage{tikz}
+\usepackage{caption}
+\usetikzlibrary{arrows}
+\usepackage{verbatim}
+\usepackage{array}
+%\setlength{\extrarowheight}{1pt}
+\usepackage{booktabs} %for top, middle and bottomline
+\usepackage{bigstrut}
+\usepackage{tcolorbox}
+\setlength\bigstrutjot{3pt}
+\usepackage{verbatim}
+\usepackage{mathtools}
+
+
+\usepackage{graphicx}
+
+
+\usepackage{stackengine}
+\usepackage[display]{texpower}
+%\usepackage[screen,nopanel]{pdfscreen}
+%\usepackage{booktabs}
+\usepackage{lmodern}
+\makeatletter
+\newlength\mylena
+\newlength\mylenb
+\newcommand\mystrut[1][2]{%
+	\setlength\mylena{#1\ht\@arstrutbox}%
+	\setlength\mylenb{#1\dp\@arstrutbox}%
+	\rule[\mylenb]{0pt}{\mylena}}
+\makeatother
+
+\newtcolorbox{mybox}[3][]
+{
+	colframe = #2!25,
+	colback  = #2!10,
+	coltitle = #2!20!black,
+	title    = #3,
+	#1,
+}
+
+\definecolor{grannysmithapple}{rgb}{0.66, 0.89, 0.63}
+\definecolor{goldenyellow}{rgb}{1.0, 0.87, 0.0}
+\definecolor{electricindigo}{rgb}{0.44, 0.0, 1.0}
+
+% You can add more of these if it is helpful.
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\renewcommand{\qed}{\hfill $\framebox(6,6){}$}
+\newtheorem*{prob*}{Problem statement}
+\newtheorem{prob}{Problem statement:}[section]
+\newtheorem{ques}{Question:}[section]
+\newtheorem{ex}{EXAMPLE:}[section]
+\newcommand*\xor{\mathbin{\oplus}}
+\newcommand{\dint}{\displaystyle\int}
+%\newcommand{\dfrac}{\displaystyle\frac}
+\newtheorem{remark}{Remark}
+\definecolor{agreen}{RGB}{102,102,102}
+% Use the proof environment when the proof immediately follows the corresponding
+% theorem or lemma.
+\renewenvironment{proof}{\par{\noindent \bf Proof:}}{\qed \par}
+
+% Use the proofof environment when the proof appears later.
+\newenvironment{proofof}[1]{\par{\noindent \bf Proof of #1:}}{\qed\par}
+
+% Use the proofsketch environment for less formal proof ideas.
+\newenvironment{proofsketch}{\par{\noindent \bf Proof Sketch:}}{\qed\par}
+\setlength{\parindent}{0cm}
+
+% CHANGE THESE DEFINITIONS AS APPROPRIATE:
+\def \scribe {Shivaraj B H} % Change this to your names
+\def \lecturer {} % Change this only if there is a guest lecturer
+\def \lecturedate {}  % Change this to the date of class
+\def \lecturenumber {} % Change this to the number of the class
+\def \lecturetitle {} % Change this too
+\def\delequal{\mathrel{\ensurestackMath{\stackon[1pt]{=}{\scriptstyle\Delta}}}}
+\begin{document}
+	\title{%
+		\fontsize{16}{24}\bfseries % boldface 25pt
+		\makebox[\textwidth][s]{%
+			\makebox[30pt][l]{%
+				\includegraphics[width=0.15\textwidth]{logo}}%
+			\hfill
+			\begin{tabular}[b]{@{}c@{}}
+			    Machine Learning a probabilistic perspective \\ by Kevin Murphy \\ Chapter 3 : Exercise 2 \\
+			\end{tabular}%
+			\hfill
+		}%
+	}
+	\date{\today}
+	\maketitle
+
+
+
+	
+	\begin{mybox}{goldenyellow}{}
+		\begin{prob*}		
+			Marginal likelihood for the Beta-Bernoulli model\\
+			In Equation 5.23, we showed that the marginal likelihood is the ratio of the normalizing constants: (This comes in the later chapter and hence you don't have to worry about it now. All the information required for this question has been given below.)\\
+			\begin{equation}
+			p(\textit{D})\;=\;\dfrac{\textit{Z}({\alpha}_0\;+\;N_0\;,\;{\alpha}_1\;+\;N_1)}{\textit{Z}(\alpha_0\;,\;\alpha_1)} \;=\;\dfrac{\Gamma(\alpha_0\;+\;N_0)\;\Gamma(\alpha_1\;+\;N_1)\;\Gamma(\alpha_0\;+\;\alpha_1)}{\Gamma(\alpha_0\;+\;\alpha_1\;+\;N)\;\Gamma(\alpha_0)\;\Gamma(\alpha_1)} \tag{3.80}
+			\end{equation}
+			We will now derive an alternative derivation of this fact. By the chain rule of probability,\\
+			\begin{equation}
+			p(x_{1:N})\;=\;p(x_1)p(x_2|x_1)p(x_3|x_{1:2})\dots \tag{3.81}
+			\end{equation}
+			In Section 3.3.4, we showed that the posterior predictive distribution is,\\
+			\begin{equation}
+			p(X\;=\;k|D_{1:N})\;=\;\dfrac{N_k\;+\;\alpha_k}{\sum_i\;N_i\;+\;\alpha_i}\;\delequal\;\dfrac{N_k\;+\;\alpha_k}{N\;+\;\alpha} \tag{3.82}
+			\end{equation}
+			where $k\;\in\;\{0,1\}$ and $D_{1:N}$ is the data seen so far. $D = H, T, T,H,H \;\text{or}\; D = 1, 0, 0, 1, 1$.
+			Then,\\
+			\begin{align}
+			p(D)\;=&\;\dfrac{\alpha_1}{\alpha}.\dfrac{\alpha_0}{\alpha\;+\;1}.\dfrac{\alpha_0\;+\;1}{\alpha\;+\;2}.\dfrac{\alpha_1\;+\;1}{\alpha\;+\;3}.\dfrac{\alpha_1\;+\;2}{\alpha\;+\;4} \tag{3.83}\\\nonumber\\
+			=&\;\dfrac{[(\alpha_1)\dots(\alpha_1\;+\;N_1\;-\;1)][(\alpha_0)\dots(\alpha_0\;+\;N_0\;-\;1)]}{(\alpha)\dots(\alpha\;+\;N\;-\;1)} \tag{3.85} \label{eqn3.85}
+			\end{align}
+			Show how this reduces to Equation 3.80 by using the fact that, for integers, $\Gamma(\alpha)\;=\;(\alpha-1)!$
+			
+			\end{prob*}
+	\end{mybox}
+
+
+\vspace{0.3cm}				
+			
+\begin{mybox}{electricindigo}{}
+	\textbf{Solution :} 
+	In the fifth chapter we would be learning about the marginal likelihood of the Beta-Bernoulli model. In this question we are considering the fact that it can be calculated using gamma functions, which we are going to derive from the knowledge of posterior predictive distribution that we have from (page:81).\\\\
+	Marginal likelihood can basically be defined as the probability of the data to occur. This does not depend on the parameters used to model the probability distribution to predict on un-seen data points and hence it is most often not used to form the posterior predictive distribution.\\\\
+	If you are still unable to grasp what it means, then it is enough to know that, the denominator of the Bayes' formula is the marginal likelihood.\\\\
+	\textbf{Note (If you didn't notice while reading the question):}
+	\begin{itemize}
+		\item The posterior predictive distribution is formulated using dirichlet prior and dirichlet likelihood, where $\alpha$ is the scaling parameter or concentration paramter for the distribution.
+	\end{itemize}
+	Now that we know all the background information, let's get back to solving the question.\\
+	The numerators of $(\ref{eqn3.85})$ in terms of gamma function will be,
+	\begin{equation}
+	\dfrac{\Gamma(\alpha_1\;+\;N_1)}{\Gamma(\alpha_1)}.\dfrac{\Gamma(\alpha_0\;+\;N_0)}{\Gamma(\alpha_0)} \label{eqn1}
+	\end{equation}
+	and the denominator will be,
+	\begin{equation}
+	\dfrac{\Gamma(\alpha\;+\;N)}{\Gamma(\alpha)} \label{eqn2}
+	\end{equation}
+	Solving by considering $(\ref{eqn1})$ and $(\ref{eqn2})$ together,
+	\begin{equation}
+	p(D)\;=\;\dfrac{\Gamma(\alpha_0\;+\;N_0)\;\Gamma(\alpha_1\;+\;N_1)\;\Gamma(\alpha)}{\Gamma(\alpha\;+\;N)\;\Gamma(\alpha_0)\;\Gamma(\alpha_1)}
+	\end{equation}
+	Since $\alpha\;=\;\alpha_0\;+\;\alpha_1$,
+	\begin{equation}
+	p(D)\;=\;\dfrac{\Gamma(\alpha_0\;+\;N_0)\;\Gamma(\alpha_1\;+\;N_1)\;\Gamma(\alpha_0\;+\;\alpha_1)}{\Gamma(\alpha_0\;+\;\alpha_1\;+\;N)\;\Gamma(\alpha_0)\;\Gamma(\alpha_1)} \label{eqn4}
+	\end{equation}
+	Thus, $(\ref{eqn4})$ is similar to $(\ref{eqn3.85})$.
+
+	
+
+\end{mybox}
+
+
+	
+
+		
+		
+
+\end{document} 
