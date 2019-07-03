@@ -117,18 +117,29 @@ anchorcolor = red]{hyperref}
 		\item[\textbf{2}] Johnson and Trotter algorithm (Permutations of a string using mobile integers) 
 		\item[\textbf{3}] Euclidean algorithm (To find GCD) 
 		\item[\textbf{4}] \href{https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm}{Extended Euclidean algorithm} (Find coefficients of Bezout's identity eg: find x,y in ax+by=gcd(a,b))
-		\item[\textbf{5}] Matrix exponentiation (To find solutions that consists of finding something similar to fibonacci numbers, (Where you add previous numbers to get current number))
+		\item[\textbf{5}] Matrix exponentiation (To find solutions that consists of finding something similar to fibonacci numbers, (Where you add previous numbers (can be previous 2,3..n) to get current number))
 		\item[\textbf{5}] Partition problem (To find ways to split an array in such a way that the left sum and right sum about that point becomes minimum. There is also a DP approach to find the minimum difference but I haven't been able to figure out the maximum sum (out of left and right sum) that causes the difference to be minimum. I have only written down the recursive approach.)
 		\item[\textbf{6}] Some simple yet efficient one liners (element swap with XOR, powers of 2 using left shift)
-		\item[\textbf{7}]] Important DSA libraries in python (set(Hashing)))
-		\item[\textbf{8}] \href{https://www.geeksforgeeks.org/longest-consecutive-subsequence/}{Longest Consecutive Subsequence} (O(n) solution using hashing)
-		\item[\textbf{9}] Sum of all subarrays (Two approaches : One using $2^{n-1}.sum(array)$ and another using the indexes of the elements and it's value.)
+		\item[\textbf{7}] Important DSA libraries in python (set(Hashing)))
+		
+		
 		
 	\end{itemize}
 	
 
 \end{mybox}
-
+\begin{mybox}{electricindigo}{}
+	\begin{itemize}
+		\item[\textbf{8}] \href{https://www.geeksforgeeks.org/longest-consecutive-subsequence/}{Longest Consecutive Subsequence} (O(n) solution using hashing)
+		\item[\textbf{9}] Sum of all subarrays (Two approaches : One using $2^{n-1}.sum(array)$ and another using the indexes of the elements and it's value.)
+		\item[\textbf{10}] \href{http://www.jekyll.math.byuh.edu/courses/m321/handouts/gammaproperties.pdf}{Properties of Gamma function} (For positve real numbers, negative real numbers)
+		\item[\textbf{11}] Calculate $n \choose k$ for large values using modulo of $10^9+7$ (Prime number) for large values of n and r (This can be used to find the number of ways to move from (0,0) to (n,n) using the formula $2(n-1) \choose (n-1)$. The basic idea is to find the numerator of combinations and then the modular inverse of the factorial part in the denominator $(n-r)!(r)!$, finally multiply the inverse with the numerator factorial value $(n)!$. Print the modulo of the result.)
+		\item[\textbf{12}] Fold a paper of dimensions $h\;,\;w$ to dimensions $h_1\;,\;w_1$ (The illustration to reach to the solution for input length reaching upto $10^{15}$ has been mentioned in the code segment. The algorithm takes on an average $4.23\;{\mu}s$, for h=10,w=20,$h_1$=3,$w_1$=2 and $4.27\;{\mu}s$ for h=$10^5$,w=$20^5$,$h_1$=$3$,$w_1$=2, which is O(1) (If you \href{https://en.wikipedia.org/wiki/Binary_logarithm#Iterative_approximation}{look at the algorithm} used to compute the log base 2, then you will be convinced that it is not O(1) but if you consider the case above there is no such drastic increase in time and hence you can think of the algorithm to be psuedo constant) because log function is approximately a constant time operation.)
+		\item[\textbf{13}] Karatsuba algorithm for multiplying n-bit numbers, Strassen algorithm for multiplying nxn matrices, change loop order to multiply two matrices (Right utilisation of cache).
+		\item[\textbf{14}] Divide and conquer algorithms.
+		\item[\textbf{15}] Number of ways to fill 1 and 2 in a n length tray is the nth fibonacci number, where n is the length of the array. (It is a music theory application to find number of ways to fill long and short syllables, where 1 is short and 2 is long.)
+	\end{itemize}
+\end{mybox}
 
 	
 

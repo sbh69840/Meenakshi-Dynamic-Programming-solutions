@@ -7,5 +7,5 @@ def k_divisible(arr,n,k):
 	result = 0
 	for a in mod:
 		result+=(a*(a-1))//2
-	return result
+	return result+mod[0]
 print(k_divisible([1,2,3,4],4,1))
