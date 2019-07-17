@@ -94,6 +94,7 @@ anchorcolor = red]{hyperref}
 			\end{tabular}%
 			\hfill
 		}
+	-Shivaraj B H
 	}
 	\date{\today}
 	\maketitle
@@ -101,20 +102,18 @@ anchorcolor = red]{hyperref}
 
 
 	
-	\begin{mybox}{goldenyellow}{}
-		\begin{prob*}		
-			Here I will be listing all the important algorithm's that you have to remember before going to any interview or coding competitions. (Not necessary that I mention every single one of them)
-			\end{prob*}
+	\begin{mybox}{goldenyellow}{}		
+		Here I will be listing all the important algorithm's that you have to remember before going to any interview or coding competitions. (Not necessary that I mention every single one of them)
 	\end{mybox}
 
 
-\vspace{0.3cm}				
+			
 			
 \begin{mybox}{electricindigo}{}
 	\textbf{Solution :} 
 	\begin{itemize}
 		\item[\textbf{1}] Kadane's algorithm (Effeicient algorithm for maximum subarray sum. It is based on the idea that at any point in the array we can decide whether we have to add the current element to the preivous sum or start fresh from that point.)
-		\item[\textbf{2}] Johnson and Trotter algorithm (Permutations of a string using mobile integers) 
+		\item[\textbf{2}] Johnson and Trotter algorithm (Permutations of a string using mobile integers)
 		\item[\textbf{3}] Euclidean algorithm (To find GCD) 
 		\item[\textbf{4}] \href{https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm}{Extended Euclidean algorithm} (Find coefficients of Bezout's identity eg: find x,y in ax+by=gcd(a,b))
 		\item[\textbf{5}] Matrix exponentiation (To find solutions that consists of finding something similar to fibonacci numbers, (Where you add previous numbers (can be previous 2,3..n) to get current number))
@@ -138,7 +137,16 @@ anchorcolor = red]{hyperref}
 		\item[\textbf{13}] Karatsuba algorithm for multiplying n-bit numbers, Strassen algorithm for multiplying nxn matrices, change loop order to multiply two matrices (Right utilisation of cache).
 		\item[\textbf{14}] Divide and conquer algorithms.
 		\item[\textbf{15}] Number of ways to fill 1 and 2 in a n length tray is the nth fibonacci number, where n is the length of the array. (It is a music theory application to find number of ways to fill long and short syllables, where 1 is short and 2 is long.)
+		\item[\textbf{15}] Longest monotonically increasing, bitonic sequences. (For LMI, the algorithm I have come up with is a recursive one and it takes less than $O(2^N)$, whereas it would have taken $O(2^{N}+N)$ to generate all subsequences and then find for the longest and also more auxillary space because we will be storing the subsequences. (Considering you are generating subsequence using recursion itself, which is obsolete.) )
 	\end{itemize}
+\end{mybox}
+\begin{mybox}{electricindigo}{}
+	\begin{itemize}
+		\item[\textbf{16}] \href{https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/}{Longest Increasing Subsequence} O(NlogN) solution. I had implemented a recursive approach which was better (Check the code snippet for the code.) than the backtracking recursive approach given \href{https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/}{here}.
+		\item[\textbf{17}] Quick sort : O(nlogn) time complexity and O(logn) space complexity. Radix sort : O(nlogU) time complexity (Where U is the largest element of the array) and O(logn) auxilary space. Heap sort : O(nlogn) time complexity and O(1) auxilary space.
+		\item[\textbf{18}] Printing permutations of a string with repetitions allowed. To print permutations of a string we use backtracking (Generally), although we have a better approach as mentioned in $(\textbf{2})$. Using the backtracking approach we only have to edit how many iterations the for loop runs, to print the permutations with repetition.
+	\end{itemize}
+	
 \end{mybox}
 
 	

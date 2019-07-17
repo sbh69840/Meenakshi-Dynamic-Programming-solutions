@@ -1,0 +1,295 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{fullpage}
+\usepackage{times}
+\usepackage{tikz}
+\usepackage{caption}
+\usetikzlibrary{arrows}
+\usepackage{verbatim}
+\usepackage{array}
+%\setlength{\extrarowheight}{1pt}
+\usepackage{booktabs} %for top, middle and bottomline
+\usepackage{bigstrut}
+\usepackage{tcolorbox}
+\setlength\bigstrutjot{3pt}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{listings}
+
+\usepackage{graphicx}
+
+
+\usepackage[colorlinks = true,
+linkcolor = red,
+urlcolor  = red,
+citecolor = red,
+anchorcolor = red]{hyperref}
+\usepackage[display]{texpower}
+%\usepackage[screen,nopanel]{pdfscreen}
+%\usepackage{booktabs}
+\usepackage{lmodern}
+\makeatletter
+\newlength\mylena
+\newlength\mylenb
+\newcommand\mystrut[1][2]{%
+	\setlength\mylena{#1\ht\@arstrutbox}%
+	\setlength\mylenb{#1\dp\@arstrutbox}%
+	\rule[\mylenb]{0pt}{\mylena}}
+\makeatother
+
+\newtcolorbox{mybox}[3][]
+{
+	colframe = #2!25,
+	colback  = #2!10,
+	coltitle = #2!20!black,
+	title    = #3,
+	#1,
+}
+
+\definecolor{grannysmithapple}{rgb}{0.66, 0.89, 0.63}
+\definecolor{goldenyellow}{rgb}{1.0, 0.87, 0.0}
+\definecolor{electricindigo}{rgb}{0.44, 0.0, 1.0}
+
+% You can add more of these if it is helpful.
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\renewcommand{\qed}{\hfill $\framebox(6,6){}$}
+\newtheorem*{prob*}{Problem statement}
+\newtheorem{prob}{Problem statement:}[section]
+\newtheorem{ques}{Question:}[section]
+\newtheorem{ex}{EXAMPLE:}[section]
+\newcommand*\xor{\mathbin{\oplus}}
+\newcommand{\dint}{\displaystyle\int}
+%\newcommand{\dfrac}{\displaystyle\frac}
+\newtheorem{remark}{Remark}
+\definecolor{agreen}{RGB}{102,102,102}
+% Use the proof environment when the proof immediately follows the corresponding
+% theorem or lemma.
+\renewenvironment{proof}{\par{\noindent \bf Proof:}}{\qed \par}
+
+% Use the proofof environment when the proof appears later.
+\newenvironment{proofof}[1]{\par{\noindent \bf Proof of #1:}}{\qed\par}
+
+% Use the proofsketch environment for less formal proof ideas.
+\newenvironment{proofsketch}{\par{\noindent \bf Proof Sketch:}}{\qed\par}
+\setlength{\parindent}{0cm}
+
+% CHANGE THESE DEFINITIONS AS APPROPRIATE:
+\def \scribe {Shivaraj B H} % Change this to your names
+\def \lecturer {} % Change this only if there is a guest lecturer
+\def \lecturedate {}  % Change this to the date of class
+\def \lecturenumber {} % Change this to the number of the class
+\def \lecturetitle {} % Change this too
+\begin{document}
+	\title{
+		\fontsize{16}{24}\bfseries
+		\makebox[\textwidth][s]{
+			\makebox[-10pt][l]{
+				}
+			\hfill
+			\begin{tabular}[b]{@{}c@{}}
+			    Converting lab to Mini Datacentre 
+			\end{tabular}
+			\hfill
+		}
+	-Shivaraj B H
+	}
+	\date{\today}
+	\maketitle
+
+
+
+	
+	\begin{mybox}{goldenyellow}{}		
+		Here I will be listing the process that I went through to create a datacenter out of the lab at my University (Analog devices lab).	
+	\end{mybox}
+
+
+\vspace{0.3cm}				
+			
+\begin{mybox}{electricindigo}{}
+	\textbf{Solution :} 
+	\begin{itemize}
+		\item[\textbf{1}] Add all the systems in the lab to a network sharing group and access all those systems from anywhere in the world: 
+		\begin{lstlisting}
+		==> Select a drive in windows.
+		==> Right click and select 
+		==> Give access to 
+		==> Advanced Sharing
+		==> Press advanced sharing 
+		==> Share this folder 
+		==> type a share name 
+		==> Select permissions and give full 
+		control.
+		==> Select the drive and right click, click 
+		on properties. 
+		==> Go to security and  select advanced.
+		==> Click Add and  select a principal 
+		==> Select advanced and find now 
+		==> select the people you want to give
+		access to (You can create one account that
+		has access to the drive and remove permiss
+		-ions of everyone else.) 
+		\end{lstlisting}
+		
+	\end{itemize}
+	
+	
+
+\end{mybox}
+
+\begin{mybox}{electricindigo}{}
+	\begin{itemize}
+		\item[] \begin{lstlisting}
+		==> Select Type 
+		==> Select applies to and give full control
+		(Note that this process is not necessary,
+		it's only necessary if you want to give 
+		access to the folder only to specifc users 
+		and not to everyone.)
+		
+		==> Go to computer menu in my computer 
+		and select map a network to drive 
+		==> select a drive 
+		==> Type folder in the form \\IP_address\
+		<The folder name you previously typed> 
+		==> Tick all the boxes 
+		==> Finish
+		\end{lstlisting} 
+		\item[\textbf{2}] All the above steps are for bringing your drive or any other folders on to the shared 
+		network. Now look at how to connect all 
+		the drives from all those networks on your 
+		system, then create a SSH server on that particular system and be able to access all the folders on the
+		network by using "net use" command. 
+		Finally we will expose that ssh server 
+		to the world.\\
+		(To share winodws drives on network)
+		\begin{lstlisting}
+		==> Go to my computer and select computer 
+		in the menu bar 
+		==> Add a network location 
+		==> Type the folder name in format
+		\\IP_address\<folder> 
+		==> click next.
+		This is all you need to do to make the 
+		drive visible on the network and access
+		that drive from any system on the network.
+		(If you are on ubuntu and want to connect 
+		to windows network)
+		==> sudo apt-get install cifs-utils
+		==> sudo mkdir /mnt/<share_name>/ 
+		==> sudo mount -t cifs -o username=
+		<username> //<IP_address>/<folder> 
+		/mnt/<share_name>/
+		==>Then cd into it and you will 
+		see the folders.
+		\end{lstlisting}
+		
+	
+		
+	\end{itemize}	
+\end{mybox}
+\begin{mybox}{electricindigo}{}
+	\begin{itemize}
+		\item[\textbf{2}] \href{https://winscp.net/eng/docs/guide_windows_openssh_server}{Now it's time to create a server on the windows 10 machine}. (In ubuntu the steps are easy, it's just installing the openssh-server.)
+		\begin{lstlisting}
+		(If you are on windows)
+		==> Download OpenSSH-windows64 and ectract 
+		it in Program files
+		==> Open powershell as an administrator
+		and run from the Openssh dir.
+		==> powershell.exe -ExecutionPolicy Bypass
+		-File install-sshd.ps1
+		==> Configure the firewall using the
+		following command
+		==> New-NetFirewallRule -Name sshd 
+		-DisplayName 'OpenSSH SSH Server' 
+		-Enabled True -Direction Inbound 
+		-Protocol TCP -Action Allow 
+		-LocalPort 22
+		==> Go to control panel.
+		==> Administrative tools
+		==> Services
+		==> Right-click on all OpenSSH services
+		==> Go to properties
+		==> select Automatic and start the service.
+		\end{lstlisting}  
+		
+		\item[\textbf{3}]Now that you have created a server and you know how to mount all the local system on the server, we have to now look at how to make the system visible to the world and learn important commands to copy files from remote to local and local to remote.
+		\begin{lstlisting}
+		==> Run this on server
+		==> ssh -R myalias:22:localhost:22 serveo
+		.net
+		This will make the server visible to the 
+		internet.
+		==> To login
+		==> (ubuntu) ssh -J serveo.net user@alias
+		==> (windows) ssh -o ProxyCommand="ssh 
+		-W myalias:22 serveo.net" user@alias
+		==> (Login when on the network) ssh 
+		user@<IP_address>
+		\end{lstlisting} 
+	\end{itemize}
+\end{mybox}
+	
+\begin{mybox}{electricindigo}{}
+	\begin{itemize}
+		\item[\textbf{4}] Now let's see how to login to a windows server and use few commands.
+		\begin{lstlisting}
+		==> ssh into the windows server.
+		==> to change drive just use "e:"
+		==> To mount a network driver that you
+		created initially, do this
+		net use z: \\192.168.4.121\PC_08_E
+		==> do z: to go that mounted directory
+		==> To copy files to any mounted drive or
+		anywhere on the system use
+		xcopy source destination
+		==> To copy between a windows system at your 
+		home and a windows server in your college:
+		==> scp -o ProxyCommand="ssh -W alias:22 
+		serveo.net" user@alias:"E:\data_process.py" 
+		"E:\lfta"
+		==> To send files to the server
+		==> scp -o ProxyCommand="ssh -W alias:22 
+		serveo.net" "E:\lfta" user@alias:
+		"E:\data_process.py"
+		\end{lstlisting}
+	\item[\textbf{5}] Just to avoid all this windows circus, we decided to shift to ubuntu server. We will be mounting all windows smb share files to the ubuntu server as described in the end of section 1. Then, we will access the server and all the windows smb share locations from one server. Basically we will have all the storage space of the lab from one single server.
+	\begin{lstlisting}
+	==> Install ubuntu server 18
+	==> Run the commands on section 3 to start
+	the ssh forwarding.
+	==> Run a http forwarding to serveo.net
+	,to have a free website.
+	==> ssh -R -o ServerAliveInterval=5 <alias>:80:
+	localhost:80 serveo.net
+	\end{lstlisting}
+	
+	\end{itemize}
+\end{mybox}
+\begin{mybox}{electricindigo}{}
+	\begin{itemize}
+		\item[\textbf{6}] Commands for copying files from and to a ubuntu server.
+		\begin{lstlisting}
+		==> To copy to system (windows or linux) at 
+		your home from ubuntu server in the 
+		University:
+		==> scp -o ProxyCommand="ssh -W <alias>:22 
+		serveo.net" <user or root>@alias:/
+		<location of file> "E:\<destination>"
+		==> To send files to the server from a 
+		windows or a linux client.
+		==> scp -o ProxyCommand="ssh -W alias:22 
+		serveo.net" "E:\<file location>" <user or 
+		root>@alias:/<destination>
+		\end{lstlisting}
+	\item[\textbf{7}] Well that's not the end, the main problem arised now. If I tried to send file to a windows system that I have mounted on my server, then I was getting permission denied. I was able to retrieve files from there on to the local system but wasn't able to send files from local to the system mounted to server. (Obviously I needed root permissions) I figured out after an hour of pondering that I needed to login over ssh using root. Then I went to /etc/ssh/sshd\_config and changed PermitRootLogin to yes. Then I did "service sshd restart". I  was done. 
+	\item[\textbf{8}] This is the end of part 1. Hopefully I might make a UI to access the server and from there manage the huge amount of storage I get from all the systems in the University.  
+	\end{itemize}
+\end{mybox}
+		
+
+\end{document} 

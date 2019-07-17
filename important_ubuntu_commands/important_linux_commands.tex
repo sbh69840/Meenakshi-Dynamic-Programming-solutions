@@ -1,0 +1,146 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{fullpage}
+\usepackage{times}
+\usepackage{tikz}
+\usepackage{caption}
+\usetikzlibrary{arrows}
+\usepackage{verbatim}
+\usepackage{array}
+%\setlength{\extrarowheight}{1pt}
+\usepackage{booktabs} %for top, middle and bottomline
+\usepackage{bigstrut}
+\usepackage{tcolorbox}
+\setlength\bigstrutjot{3pt}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{listings}
+
+\usepackage{graphicx}
+
+
+\usepackage[colorlinks = true,
+linkcolor = red,
+urlcolor  = red,
+citecolor = red,
+anchorcolor = red]{hyperref}
+\usepackage[display]{texpower}
+%\usepackage[screen,nopanel]{pdfscreen}
+%\usepackage{booktabs}
+\usepackage{lmodern}
+\makeatletter
+\newlength\mylena
+\newlength\mylenb
+\newcommand\mystrut[1][2]{%
+	\setlength\mylena{#1\ht\@arstrutbox}%
+	\setlength\mylenb{#1\dp\@arstrutbox}%
+	\rule[\mylenb]{0pt}{\mylena}}
+\makeatother
+
+\newtcolorbox{mybox}[3][]
+{
+	colframe = #2!25,
+	colback  = #2!10,
+	coltitle = #2!20!black,
+	title    = #3,
+	#1,
+}
+
+\definecolor{grannysmithapple}{rgb}{0.66, 0.89, 0.63}
+\definecolor{goldenyellow}{rgb}{1.0, 0.87, 0.0}
+\definecolor{electricindigo}{rgb}{0.44, 0.0, 1.0}
+
+% You can add more of these if it is helpful.
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\renewcommand{\qed}{\hfill $\framebox(6,6){}$}
+\newtheorem*{prob*}{Problem statement}
+\newtheorem{prob}{Problem statement:}[section]
+\newtheorem{ques}{Question:}[section]
+\newtheorem{ex}{EXAMPLE:}[section]
+\newcommand*\xor{\mathbin{\oplus}}
+\newcommand{\dint}{\displaystyle\int}
+%\newcommand{\dfrac}{\displaystyle\frac}
+\newtheorem{remark}{Remark}
+\definecolor{agreen}{RGB}{102,102,102}
+% Use the proof environment when the proof immediately follows the corresponding
+% theorem or lemma.
+\renewenvironment{proof}{\par{\noindent \bf Proof:}}{\qed \par}
+
+% Use the proofof environment when the proof appears later.
+\newenvironment{proofof}[1]{\par{\noindent \bf Proof of #1:}}{\qed\par}
+
+% Use the proofsketch environment for less formal proof ideas.
+\newenvironment{proofsketch}{\par{\noindent \bf Proof Sketch:}}{\qed\par}
+\setlength{\parindent}{0cm}
+
+% CHANGE THESE DEFINITIONS AS APPROPRIATE:
+\def \scribe {Shivaraj B H} % Change this to your names
+\def \lecturer {} % Change this only if there is a guest lecturer
+\def \lecturedate {}  % Change this to the date of class
+\def \lecturenumber {} % Change this to the number of the class
+\def \lecturetitle {} % Change this too
+\begin{document}
+	\title{
+		\fontsize{16}{24}\bfseries
+		\makebox[\textwidth][s]{
+			\makebox[-10pt][l]{
+				}
+			\hfill
+			\begin{tabular}[b]{@{}c@{}}
+			    Important Linux Commands
+			\end{tabular}%
+			\hfill
+		}
+	-Shivaraj B H
+	}
+	\date{\today}
+	\maketitle
+
+
+
+	
+	\begin{mybox}{goldenyellow}{}
+		\begin{prob*}		
+			Here I will be listing all the important linux commands that I came through (Worth remembering).
+			\end{prob*}
+	\end{mybox}
+
+
+\vspace{0.3cm}				
+			
+\begin{mybox}{electricindigo}{}
+	\textbf{Solution :} 
+	\begin{itemize}
+		\item[\textbf{1}] To print all running processess : 
+		\begin{lstlisting}
+		ps -A
+		\end{lstlisting}
+		\item[\textbf{2}] To kill a user and it's processess :  (Apparently the background processess (Eg : The one's you use nohup for) won't be killed. For that you will have to restart the system.)
+		\begin{lstlisting}
+		pkill -KILL -u <user>
+		\end{lstlisting}
+		\item[\textbf{3}] Run python script (or anythin) in background and write the console output to a file (Even if the user logs out the process will not stop and you can also run it from another system over ssh and the process still remains after cancelling the terminal) :
+		\begin{lstlisting}
+		nohup python3 file.py & > output.txt
+		\end{lstlisting} 
+		\item[\textbf{4}] Search strings inside files in the current directory :
+		\begin{lstlisting}
+		grep -rnw './' -e '<search_string>'
+		\end{lstlisting}
+		%\item[\textbf{4}]\lstinputlisting{Extended_Euc_alg.py}
+	\end{itemize}
+	
+	
+
+\end{mybox}
+
+
+	
+
+		
+		
+
+\end{document} 
