@@ -1,4 +1,5 @@
-import math 
+#!/usr/bin/python
+import math
 
 def exp_func(x, y, m):
     exp = bin(y)
@@ -49,7 +50,7 @@ def step3 (n, r):
 def step4(n, r):
     if n > 5690034:
         if n <= r:
-            # print("[+]"+str(n)+" is a Prime Step 4")
+            print("[+]"+str(n)+" is a Prime Step 4")
             return True
 
 
@@ -64,7 +65,7 @@ def step5(n, r):
         if b != l:
             #print("[-]"+str(n)+" is no Prime 5")
             return False
-    # print("[+]"+str(n)+" is a Prime Number Step 5")
+    print("[+]"+str(n)+" is a Prime Number Step 5")
     return True
 
 
@@ -74,34 +75,12 @@ def aks(n):
         r = step2(n)
         if step3(n, r) != False:
             if step4(n, r) != True:
-               return step5(n, r)
+                return step5(n, r)
     return False
 
-def find_unique_primes(num):
-	unique = set()
-	if num%2==0:
-		unique.add(2)
-		while num%2==0:
-			num/=2
-	for i in range(3,int(num**(1/2))+1,2):
-		if num%i==0:
-			unique.add(i)
-			while num%i==0:
-				num/=i 
-	if num>2:
-		unique.add(int(num))
-	return unique
 
-n = 1197060983074059442676331442468136267958543002047585409352167850146454379702101825405935828467629329874635873245
-# (2996863034895*(2**(1290000))-1)
-# while True:
-res = math.ceil(math.pow(math.log(n,2),\
-	math.log(math.log(n,2),2))**2)
-end = math.ceil(n**(1/2))
-print(aks(3))
-print(end)
-for i in range(2,end):
-	if aks(i) and n%i==0:
-		print(i)
-	# n+=1 
-print("Done")
+
+for i in range(2,1000):
+   aks(i)
+#print(100207100213100237100267*100207100213100237100267)
+#aks(671998030559713968361666935769)
